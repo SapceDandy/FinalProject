@@ -1,10 +1,15 @@
 <template>
     <div class="navbarContainer" :class="{active: isActive, transitioning: isTransitioning}">
       <nav class="navbar">
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
+        <section class="logo">
+          <a href="/">
+            <img src="../assets/exxy_logo.png" alt="img" class="image">
+          </a>
+        </section>
+        <ul class="nav_elements">
+          <li><a href="/home">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact">Contact</a></li>
         </ul>
       </nav>
     </div>
@@ -22,6 +27,25 @@
   
   
 <style scoped>
+  .logo {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 85%;
+    height: 100%;
+  }
+  .nav_elements {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 15%;
+    height: 100%;
+  }
+  .image {
+    width: auto;
+    height: 3rem;
+    padding: 0 1rem;
+  }
   .navbarContainer {
     position: fixed;
     top: 0;
@@ -31,14 +55,18 @@
     transition: opacity 0.3s ease;
     opacity: 0;
     visibility: hidden;
-    z-index: 1000; /* put navbar on top of other elements */
+    z-index: 1000;
   }
   
   .navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1001; /* ensure the navbar itself is above the overlay */
+    max-height: 2.5rem;
+    z-index: 1001;
     transform: translateY(-100%);
     transition: transform 0.3s ease-out;
   }
@@ -73,17 +101,26 @@
     padding: 0;
     display: flex;
     justify-content: space-evenly;
-    width: 80%;  /* adjust this to add space at the sides */
+    width: 80%;
   }
   
   .navbar a {
     color: #e8c432;
     text-decoration: none;
     font-size: 1.2rem;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease-in-out;
+  }
+
+  .navbar ul a:hover {
+    color: #ffe792;
   }
   
-  .navbar a:hover {
-    color: #f8d762;
+  .navbar li {
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .navbar li:hover {
+    transition: transform 0.3s ease-in-out;
+    transform: scale(1.2);
   }
 </style>  

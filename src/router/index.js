@@ -1,12 +1,10 @@
-// import Vue and VueRouter
 import { createRouter, createWebHistory } from 'vue-router'
 
-// import your components
 import WelcomePage from '../components/WelcomePage.vue'
-// import HelloWorld from '../components/HelloWorld.vue'
 import MainPage from '../components/MainPage.vue'
+import About from '../components/AboutPage.vue'
+import Contact from '../components/ContactPage.vue'
 
-// define your routes
 const routes = [
   {
     path: '/',
@@ -18,13 +16,21 @@ const routes = [
     name: 'Home',
     component: MainPage,
   },
+  {
+    path: '/About',
+    name: 'About',
+    component: About,
+  },
+  {
+    path: '/Contact',
+    name: 'Contact',
+    component: Contact,
+  }
 ]
 
-// create the router instance
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
 })
 
-// export the router
 export default router

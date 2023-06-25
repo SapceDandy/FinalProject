@@ -46,7 +46,7 @@ export default {
     },
     handleKeyDown(e) {
       if (e.code === 'Space') {
-        e.preventDefault(); // prevent the default action (scroll / move caret)
+        e.preventDefault();
         this.showNavbar = !this.showNavbar;
       }
     }

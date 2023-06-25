@@ -39,15 +39,15 @@
         mounted() {
             setTimeout(() => {
                 this.animateText = true;
-            }, 1000); // Delay to start first animation
+            }, 1000);
 
             setTimeout(() => {
                 this.animateText2 = true;
-            }, 1100); // Delay to start second animation
+            }, 1100);
 
             setTimeout(() => {
                 this.animateText3 = true;
-            }, 1200); // Delay to start third animation
+            }, 1200);
 
             setTimeout(() => {
                 this.showOverlay = true;
@@ -151,13 +151,13 @@
         background: var(--gradient);
         text-shadow: var(--text-shadow);
         transform: rotate(var(--rotate));
-        transition: all 1.2s ease-out;
+        transition: all 1.2s ease-in-out;
     }
 
     button:hover {
         box-shadow: 0 20px 56px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
         transform: translateY(-3px);
-        transition: all .5s ease-out;
+        transition: all .5s ease-in-out;
     } 
 
     .overlay {
@@ -174,7 +174,7 @@
 
     .name, .job, button {
     transform: translate3d(-65vw, 0, 0);
-    transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0s; /* Set delay to 0s */
+    transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0s;
     }
 
     .animateText {
@@ -197,18 +197,18 @@
     }
 
     .textWrapperAnimated {
-    animation: slideInFromLeft 1.5s ease-in forwards;
+    animation: slideInFromLeft 1.5s ease-in-out forwards;
     }
 
     .nameAnimated {
-    animation: slideInFromLeft 1.5s ease-out 1s forwards;
+    animation: slideInFromLeft 1.5s ease-in-out 1s forwards;
     }
 
     .jobAnimated {
-    animation: slideInFromLeft 2s ease-out 2s forwards;
+    animation: slideInFromLeft 2s ease-in-out 2s forwards;
     }
 
     .buttonAnimated {
-    animation: slideInFromLeft 2.5s ease-out 3s forwards;
+    animation: slideInFromLeft 2.5s ease-in-out 3s forwards;
     }
 </style>

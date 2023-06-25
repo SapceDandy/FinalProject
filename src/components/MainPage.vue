@@ -32,8 +32,17 @@
             <div class="bottom-half">
                 <div v-for="(item, index) in moreImages" :key="index" class="image-container">
                     <div class="imageD2">
-                        <img :src="item" alt="img" class="imageS2 animate__animated animate__slide-in-right">
-                        <button class="button-2 animate__animated animate__slide-in-right">Button</button>
+                      <section class="btn_wrap">
+                        <button 
+                            class="button-2 animate__animated animate__slide-in-right" 
+                            :style="{ '--gradient': gradient, '--text-shadow': textShadow, '--rotate': rotate + 'deg' }"
+                            @mousemove="updateGradient" 
+                            @mouseleave="resetGradient"
+                        >
+                            {{ buttonWords[index] }}
+                        </button>
+                      </section>
+                      <img :src="item" alt="img" class="imageS2 animate__animated animate__slide-in-right">
                     </div>
                 </div>
             </div>
@@ -61,6 +70,11 @@
             require('../assets/girl-3.jpeg'),
             require('../assets/girl-7.jpeg'),
             require('../assets/wax.jpg')
+        ],
+        buttonWords: [
+          'Brow Lamination + Henna',
+          'Eyelashe Extensions',
+          'Hair Removal'
         ]
       };
     },
@@ -94,22 +108,24 @@
 }
 
 .second-section {
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     row-gap: 2rem;
+    background-color: #e8c432;
 }
 
 .bottom-half {
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
-    height: 50%;
-    width: 100%;
+    height: 65%;
+    width: auto;
+    background-color: red;
 }
 
 .top-half {
@@ -117,21 +133,42 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 50%;
+    row-gap: 1rem;
+    padding: 1rem;
+    height: 35%;
     width: 100%;
+}
+
+.top-half h1 {
+    font-size: 5rem;
+    font-weight: 800;
+    margin: -1rem;
+    font-family: 'Playfair Display', serif;
+    color: #4d4c4c;
+}
+
+.top-half h2 {
+    font-size: 2rem;
+    font-weight: 400;
+    margin: -1rem;
+    font-family: 'Playfair Display', serif;
+    color: #ffffff;
 }
 
 .imageD2 {
+    position: relative;
     display: flex;
     height: 100%;
-    width: 33.33%;
-    object-fit: cover;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: pink;
 }
 
 .imageS2 {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
   .service-1{
@@ -207,8 +244,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
+    overflow: none;
   }
   
   .right-subsection {
@@ -242,11 +278,11 @@
   
   @keyframes slide-in-bottom {
     0% {
-      transform: translateY(100%);
+      transform: translateY(100%) ease-in-out;
       opacity: 0;
     }
     100% {
-      transform: translateY(0);
+      transform: translateY(0) ease-in-out;
       opacity: 1;
     }
   }
@@ -254,7 +290,7 @@
   .animate__animated.animate__fade-in {
     animation-name: fade-in;
     animation-duration: 1s;
-    transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0s;
+    transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0s ease-in-out;
   }
 
   @keyframes fade-in {
@@ -269,21 +305,21 @@
   .animate__animated.animate__slide-in-right {
     animation-name: slide-in-right;
     animation-duration: 1s;
-    transform: translate3d(-65vw, 0, 0);
+    transform: translate3d(-65vw, 0, 0) ease-in-out;
   }
   
   @keyframes slide-in-right {
     0% {
-      transform: translateX(100%);
+      transform: translateX(100%) ease-in-out;
       opacity: 0;
     }
     100% {
-      transform: translateX(0);
+      transform: translateX(0) ease-in-out;
       opacity: 1;
     }
   }
   .animateText {
-    transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0) ease-in-out;
   }
   .styled-text {
     display: flex;
@@ -299,37 +335,42 @@
     border: none;
     text-align: center;
     cursor: pointer;
-    transition: all 1.2s ease-out;
+    transition: all 1.2s ease-in-out;
 }
 .styled-text:hover {
     box-shadow: 0 20px 56px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     transform: translateY(-3px);
     color: #ffffff;
-    transition: all .5s ease-out;
+    transition: all .5s ease-in-out;
 }
 
 .expand {
-  transition: transform 0.3s;
+  transition: transform 0.3s ease-in-out;
   transform: scale(1.1);
 }
 
 .service p {
-  transition: transform 0.3s;
+  transition: transform 0.3s ease-in-out;
 }
 
 @keyframes expand {
-  0% { transform: scale(1); }
-  100% { transform: scale(1.1); }
+  0% { transform: scale(1) ease-in-out; }
+  100% { transform: scale(1.1) ease-in-out; }
 }
 
 @keyframes shrink {
-  0% { transform: scale(1.1); }
-  100% { transform: scale(1); }
+  0% { transform: scale(1.1) ease-in-out; }
+  100% { transform: scale(1) ease-in-out; }
 }
 
 .image-container {
-  position: relative;
-  display: inline-block;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: blue;
 }
 
 .image-2 {
@@ -348,40 +389,59 @@
   width: 100%;
   height: 100%;
   background-color: rgba(232, 196, 50, 0.5);
-  transition: background-color 0.5s ease;
+  transition: background-color 0.5s ease-in-out;
 }
 
 .image-2:hover::before {
   background-color: transparent;
 }
 
+.image_wrap {
+  position: relative;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
 .button-2 {
   position: absolute;
   top: 50%;
   left: 50%;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: 'Lato', sans-serif;
+  color: #ffffff;
+  background-color: #e8c432;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 70px;
   transform: translate(-50%, -50%);
-  transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0s;
+  transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0s ease-in-out;
+  z-index: 100;
 }
 
 .button-2:hover {
-  transform: translate(-50%, -50%) scale(1.1);
-}
+    box-shadow: 0 20px 56px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    transition: all .5s ease-in-out;
+} 
 
 /* Apply animations */
 
 .animate__animated.animate__slide-in-right {
   animation-name: slide-in-right;
   animation-duration: 1s;
-  transform: translate3d(-65vw, 0, 0);
+  transform: translate3d(-65vw, 0, 0) ease-in-out;
 }
   
 @keyframes slide-in-right {
   0% {
-    transform: translateX(100%);
+    transform: translateX(100%) ease-in-out;
     opacity: 0;
   }
   100% {
-    transform: translateX(0);
+    transform: translateX(0) ease-in-out;
     opacity: 1;
   }
 }
