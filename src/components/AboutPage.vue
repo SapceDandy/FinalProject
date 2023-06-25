@@ -19,35 +19,88 @@
       return {
         aboutImage: require('../assets/exxy_pic.jpg')
       }
-    }
+    },
+    mounted() {
+      setTimeout(() => {
+          this.animateText = true;
+      }, 1000);
+    },
   }
   </script>
   
   <style scoped>
   .about {
     display: flex;
-    justify-content: space-between;
-    padding: 20px;
+    justify-content: space-around;
+    align-items: center;
+    padding: 50px;
+    color: #4d4c4c;
+    height: 100vh;
+    font-family: 'Lato', sans-serif;
+    transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0s;
+  }
+  
+  .about h1 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+  }
+  
+  .about p {
+    font-size: 1.5rem;
+    line-height: 2.5rem;
   }
   
   .content {
-    width: 60%;
+    max-width: 50%;
+    transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s;
   }
   
   .image-wrapper {
-    width: 30%;
+    max-width: 40%;
+    transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1s;
   }
   
   .image-wrapper img {
     width: 100%;
     height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   }
   
-  /* Add transitions */
   .fade-enter-active, .fade-leave-active {
     transition: opacity .5s;
   }
   .fade-enter, .fade-leave-to {
     opacity: 0;
   }
-  </style>
+  
+  @media (max-width: 768px) {
+    .about {
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .about h1 {
+      font-size: 2.5rem;
+    }
+
+    .content {
+      width: 100%;
+      padding-bottom: 20px;
+    }
+
+    .image-wrapper {
+      width: 100%;
+    }
+
+    .image-wrapper img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .about p {
+      font-size: 1rem;
+      line-height: 1.6rem;
+    }
+  }
+</style>

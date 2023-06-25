@@ -47,6 +47,25 @@
                 </div>
             </div>
         </div>
+        <div class="first-section">
+          <div class="left-image"></div>
+          <div class="right-side" :style="{'background-color': '#e8c432'}">
+            <h1 class="create-account">Create an Account</h1>
+            <div v-for="(item, index) in moreButtonText" :key="index" class="button-and-text">
+              <span class="text-class">{{ item }}</span>
+              <a href="/contact">
+                <button 
+                  class="button-3 animate__animated animate__slide-in-right"
+                  :style="{ 'position': 'relative','--gradient': gradient, '--text-shadow': textShadow, '--rotate': rotate + 'deg', 'background-color': '#eeddcc' }"
+                  @mousemove="updateGradient" 
+                  @mouseleave="resetGradient"
+                >
+                Book Now
+                </button>
+             </a>
+            </div>
+          </div>
+        </div>
     </section>
 </template>
   
@@ -75,6 +94,10 @@
           'Brow Lamination + Henna',
           'Eyelashe Extensions',
           'Hair Removal'
+        ],
+        moreButtonText: [
+          'Consult with a skincare expert',
+          'Book a professional make-up artist'
         ]
       };
     },
@@ -119,13 +142,29 @@
     background-color: #e8c432;
 }
 
+.button-and-text {
+  display: flex;
+  width: 100%;
+  height: 75%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 2rem;
+}
+
 .bottom-half {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 65%;
     width: auto;
-    background-color: red;
+}
+
+.text-class {
+  font-size: 2.2rem;
+  font-weight: 400;
+  font-family: 'Lato', san-serif;
+  color: #eeddcc;
 }
 
 .top-half {
@@ -147,6 +186,15 @@
     color: #4d4c4c;
 }
 
+.create-account {
+  font-size: 4.5rem;
+  font-weight: 800;
+  margin: -1rem;
+  padding: 2rem;
+  font-family: 'Playfair Display', serif;
+  color: #4d4c4c;
+}
+
 .top-half h2 {
     font-size: 2rem;
     font-weight: 400;
@@ -162,7 +210,6 @@
     width: 100%;
     justify-content: center;
     align-items: center;
-    background-color: pink;
 }
 
 .imageS2 {
@@ -403,27 +450,57 @@
   object-fit: cover;
 }
 
+.left-image {
+    background-image: url('../assets/girl-4.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 50%;
+    height: 100vh;
+}
+
 .button-2 {
   position: absolute;
   top: 50%;
   left: 50%;
   justify-content: center;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: 700;
   font-family: 'Lato', sans-serif;
   color: #ffffff;
   background-color: #e8c432;
   border: none;
   border-radius: 50px;
-  padding: 10px 70px;
+  padding: 30px 60px;
+  cursor: pointer;
   transform: translate(-50%, -50%);
   transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0s ease-in-out;
   z-index: 100;
-  
 }
 
 .button-2:hover {
+    box-shadow: 0 20px 56px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    transition: all .5s ease-in-out;
+} 
+
+.button-3 {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: 'Lato', sans-serif;
+  color: #4d4c4c;
+  cursor: pointer;
+  background-color: #e8c432;
+  border: none;
+  border-radius: 50px;
+  padding: 20px 60px;
+  transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0s ease-in-out;
+}
+
+.button-3:hover {
     box-shadow: 0 20px 56px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     transition: all .5s ease-in-out;
 } 

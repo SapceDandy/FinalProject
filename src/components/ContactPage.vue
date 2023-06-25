@@ -83,6 +83,7 @@ export default {
 .title {
     font-size: 7rem;
     margin-bottom: 2rem;
+    color: #4d4c4c;
 }
 
 .contactForm {
