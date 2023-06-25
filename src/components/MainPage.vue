@@ -420,6 +420,7 @@
   transform: translate(-50%, -50%);
   transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0s ease-in-out;
   z-index: 100;
+  
 }
 
 .button-2:hover {
